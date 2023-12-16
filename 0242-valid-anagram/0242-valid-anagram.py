@@ -14,7 +14,7 @@ class Solution:
         if di==ti:
             return True
         return False
-        for i in di:
-            if di[i]!=ti[i]:
-                return False
-        return True
+        # for i in di:
+        #     if di[i]!=ti[i]:
+        #         return False
+        # return True
