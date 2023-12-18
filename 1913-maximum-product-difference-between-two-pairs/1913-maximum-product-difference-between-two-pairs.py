@@ -13,6 +13,5 @@ class Solution:
                 fmi=i
             elif i< smi:
                 smi=i
-        print(fma,sma,fmi,smi)
+
         return (fma*sma) - (fmi*smi)
-        return 0
