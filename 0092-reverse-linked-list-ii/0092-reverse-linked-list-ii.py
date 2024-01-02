@@ -22,7 +22,6 @@ class Solution:
             i+=1
         MainHead=curr
         stPrev= prev
-        print(prev,curr.val)
         # We have  Now prev and Curr Pointer
         # Proceed Till we get fast
         while left<right and fast!=None:
