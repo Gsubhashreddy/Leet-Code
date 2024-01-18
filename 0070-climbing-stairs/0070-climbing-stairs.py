@@ -15,8 +15,13 @@ class Solution:
             return 1
         elif n==2:
             return 2
-        
+        c1,c2=1,2
         for i in range(2,n):
-            res.append(res[i-1]+res[i-2])
+            temp = c1+c2
+            res.append(temp)
+            c1 = c2
+            c2 = temp
+            
+            # res.append(res[i-1]+res[i-2])
             # res[i-1] = max(res[i-2],0)
         return res[-1]
