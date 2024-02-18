@@ -1,28 +1,26 @@
 class Solution:
     res = []
-    def backTrack(self, candidates, cSum, cPath, ind):
+    
+    def backTrack(self, candidates, ind, path, target, le):
         #Base
-        if cSum == 0:
-            print(cPath)
-            self.res.append(cPath[:])
+        if target == 0:
+            self.res.append(path[:])
             return
-        if ind >= len(candidates) or cSum < 0:
+        if ind > le or target < 0:
             return
         
-        
-        # Logic
-        self.backTrack( candidates, cSum, cPath, ind+1)
-        
-        ele = candidates[ind]
-        cPath.append(ele)
-        c2 = self.backTrack(candidates, cSum - ele, cPath, ind)
-        cPath.pop()
-        
-        
+        #Logic
+        curr_sum = target
+        for i in range(ind, le):
+            path.append(candidates[i])
+            self.backTrack(candidates, i, path, target - candidates[i], le)
+            path.pop()
+            
+            
+            
+            
     
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         self.res = []
-        self.backTrack(candidates, target , [], 0)
+        self.backTrack(candidates, 0 , [], target, len(candidates))
         return self.res
-        
-        
