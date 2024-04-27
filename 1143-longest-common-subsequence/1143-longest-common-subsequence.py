@@ -1,16 +1,14 @@
 class Solution:
-    ma = 0
-    def d(self, i , j, t1,t2, m,n,co):
-        if i>=m or j >=n:
-            return 0
-        if (i,j) not in self.di:
-            if t1[i] == t2[j]:
-                self.di[(i,j)]  = 1 + self.d(i+1,j+1,t1,t2,m,n,co)
-                # self.ma = max(self.ma, co)
-            else:
-                self.di[(i,j)] = max(self.d(i+1,j,t1,t2,m,n,co), self.d(i,j+1,t1,t2,m,n,co))
-        return self.di[(i,j)]
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        self.di = {}
-        return self.d(0,0,text1, text2,len(text1),len(text2), 0)
+        m, n = len(text1), len(text2)
+        dp = [[0 for i in range(len(text2)+1)] for j in range(len(text1)+1)]
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                if text1[i - 1] == text2[j - 1]:
+                    dp[i][j] = dp[i - 1][j - 1] + 1
+                else:
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+        
+        # print(dp)
+        return dp[m][n]
         
