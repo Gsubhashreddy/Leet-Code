@@ -13,8 +13,11 @@ class Solution:
             if head.left == None and head.right == None:
                 return head.val
             le = dfs(head.left)
+            if head.val == 2:
+                if le ==1:
+                    return 1
             ri = dfs(head.right)
-            print(head.val, le, ri)
+            # print(head.val, le, ri)
             if head.val == 2:
                 if le ==1 or ri ==1:
                     flag = True
